@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#080a13" />
+  <title>Pausely — Guided Breathing &amp; Meditation</title>
+  <meta name="description" content="Pausely is a calm, premium guided breathing app. Pick a rhythm, follow the glowing orb, and track your calm — all in your browser." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='g' cx='35%25' cy='30%25'><stop offset='0%25' stop-color='%237dd3fc'/><stop offset='100%25' stop-color='%238b5cf6'/></radialGradient></defs><circle cx='50' cy='50' r='42' fill='url(%23g)'/></svg>" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true">
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+    <span class="blob blob-c"></span>
+  </div>
+
+  <header class="nav">
+    <a class="logo" href="#top" aria-label="Pausely — back to top">
+      <span class="logo-dot" aria-hidden="true"></span>
+      pausely
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#breathe">Breathe</a>
+      <a href="#patterns">Patterns</a>
+      <a href="#stats">Stats</a>
+    </nav>
+    <a class="btn btn-ghost nav-cta" href="#breathe">Start a session</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Guided breathing · one quiet minute at a time</p>
+      <h1 class="hero-title">Breathe deeper.<br /><span class="grad">Live calmer.</span></h1>
+      <p class="hero-sub">Pausely turns a busy day into a calm one. Follow the glowing orb through soothing rhythms and watch the noise fade — soft visuals, smooth motion, zero clutter.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#breathe">Start breathing</a>
+        <a class="btn btn-ghost" href="#patterns">Explore patterns</a>
+      </div>
+      <p class="hero-hint">No sign-up · works offline · sessions stay on your device</p>
+    </section>
+
+    <section class="app reveal" id="breathe" aria-labelledby="app-title">
+      <div class="glass app-card">
+        <div class="app-head">
+          <h2 id="app-title">Your breathing space</h2>
+          <p id="app-now" class="app-now" aria-live="polite">Pick a rhythm and press start.</p>
+        </div>
+
+        <div class="orb-wrap idle" id="orbWrap" data-phase="idle">
+          <svg class="ring" viewBox="0 0 360 360" aria-hidden="true">
+            <circle class="ring-track" cx="180" cy="180" r="168"></circle>
+            <circle class="ring-progress" id="ringProgress" cx="180" cy="180" r="168"></circle>
+          </svg>
+          <div class="orb" id="orb">
+            <span class="orb-layer layer-cyan"></span>
+            <span class="orb-layer layer-violet"></span>
+            <span class="orb-layer layer-pink"></span>
+            <span class="orb-core"></span>
+          </div>
+          <span class="orb-pulse" id="orbPulse"></span>
+          <div class="orb-center">
+            <span class="phase" id="phaseLabel">Ready</span>
+            <span class="count" id="countNum">—</span>
+            <span class="cycles" id="cycleNum">0 cycles</span>
+          </div>
+        </div>
+
+        <div class="presets" id="presets" role="radiogroup" aria-label="Breathing rhythm">
+          <button class="pill is-active" type="button" role="radio" aria-checked="true" data-pattern="box">Box <span>4·4·4·4</span></button>
+          <button class="pill" type="button" role="radio" aria-checked="false" data-pattern="relaxed">Relaxed <span>4·7·8</span></button>
+          <button class="pill" type="button" role="radio" aria-checked="false" data-pattern="calm">Calm <span>4·6</span></button>
+          <button class="pill" type="button" role="radio" aria-checked="false" data-pattern="coherent">Coherent <span>5·5</span></button>
+        </div>
+
+        <div class="controls">
+          <button class="btn btn-primary" id="startBtn" type="button">Start</button>
+          <button class="btn btn-ghost" id="pauseBtn" type="button" disabled>Pause</button>
+          <button class="btn btn-ghost" id="resetBtn" type="button" disabled>Finish</button>
+        </div>
+        <p class="app-hint">Follow the orb — it grows as you breathe in and shrinks as you let go.</p>
+      </div>
+    </section>
+
+    <section class="stats reveal" id="stats" aria-labelledby="stats-title">
+      <h2 class="section-title" id="stats-title">Your calm, tracked</h2>
+      <p class="section-sub">Everything is stored locally in your browser — nothing ever leaves your device.</p>
+      <div class="stat-grid">
+        <div class="glass stat"><span class="stat-num" id="statSessions">0</span><span class="stat-label">sessions</span></div>
+        <div class="glass stat"><span class="stat-num" id="statMinutes">0</span><span class="stat-label">minutes breathed</span></div>
+        <div class="glass stat"><span class="stat-num" id="statBreaths">0</span><span class="stat-label">breaths</span></div>
+        <div class="glass stat"><span class="stat-num" id="statStreak">0</span><span class="stat-label">day streak</span></div>
+      </div>
+    </section>
+
+    <section class="patterns reveal" id="patterns" aria-labelledby="patterns-title">
+      <h2 class="section-title" id="patterns-title">Pick your pattern</h2>
+      <p class="section-sub">Each rhythm nudges your nervous system a different way. New here? Start with Box.</p>
+      <div class="pattern-grid">
+        <article class="glass pattern">
+          <h3>Box · 4·4·4·4</h3>
+          <p>Equal inhale, hold, exhale and hold. The classic reset for focus under pressure.</p>
+        </article>
+        <article class="glass pattern">
+          <h3>Relaxed · 4·7·8</h3>
+          <p>A long, slow exhale that tells your body the day is officially over.</p>
+        </article>
+        <article class="glass pattern">
+          <h3>Calm · 4·6</h3>
+          <p>Gentle and easy — in for four, out for six. Perfect for beginners.</p>
+        </article>
+        <article class="glass pattern">
+          <h3>Coherent · 5·5</h3>
+          <p>Five seconds in, five seconds out — a steady rhythm for smooth focus.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>pausely — built one breath at a time. <span id="year"></span></p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
